@@ -1,0 +1,172 @@
+[
+    {
+        "key_ref": "id",
+        "filters": [
+            {
+                "operator": "not_empty"
+            }
+        ],
+        "key_result": "operation_id"        
+    },
+    {
+        "key_ref": "user.id",
+        "filters": [
+            {
+                "operator": "not_empty"
+            }
+        ],
+        "key_result": "user_id"
+    },
+    {
+        "key_ref": "order",
+        "key_result": "orders",
+        "mapping": [
+            {
+                "key_ref": "number",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    },
+                    {
+                        "operator": "regex",
+                        "pattern": "([0-9]+)"
+                    }
+                ],
+                "key_result": "order_id",
+                "value": "$number"
+            },
+            {
+                "key_ref": "dateCreated",
+                "filters": [
+                    {
+                        "operator": "regex",
+                        "pattern": "([0-9]{4}-[0-9]{2}-[0-9]{2})"
+                    },
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "date",
+                "value": "$dateCreated"
+            },
+            {
+                "key_ref": "status",
+                "key_result": "type",
+                "value": "status"
+            },
+            {
+                "key_ref": "status",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "value",
+                "value": "$status"
+            },
+            {
+                "key_ref": "total",
+                "key_result": "details.amount",
+                "value": "$currency $total"
+            },
+            {
+                "key_ref": "item",
+                "key_result": "items",
+                "mapping": [
+                    {
+                        "key_ref": "id",
+                        "key_result": "item_id",
+                        "value": "$id"
+                    },
+                    {
+                        "key_ref": "name",
+                        "key_result": "name",
+                        "value": "$name"
+                    },
+                    {
+                        "key_ref": "quantity",
+                        "key_result": "quantity",
+                        "value": "$quantity"
+                    },
+                    {
+                        "key_ref": "price",
+                        "key_result": "price",
+                        "value": "$price"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "key_ref": "interaction.tickets",
+        "key_result": "tickets",
+        "mapping": [
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "ticket_id",
+                "value": "$id"
+            },
+            {
+                "key_ref": "date",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "date",
+                "value": "$date"
+            },
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "channel",
+                "value": "$..generalInfo.channel"
+            }
+        ]
+    },
+    {
+        "key_ref": "interaction.claims",
+        "key_result": "claims",
+        "mapping": [
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "claim_id",
+                "value": "$id"
+            },
+            {
+                "key_ref": "date",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "date",
+                "value": "$date"
+            },
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "channel",
+                "value": "$..generalInfo.channel"
+            }
+        ]
+    }
+]

@@ -1,0 +1,65 @@
+{
+    "operation_id": "123456789",
+    "user_id": "9875465",
+    "orders": [
+        {
+            "order_id": "123",
+            "date": "2016-09-02T12:00:00Z",
+            "type": "status",
+            "value": "pending",
+            "details": {
+                "amount": "USD 100"
+            },
+            "items": [
+                {
+                    "item_id": "123",
+                    "name": "Product 1",
+                    "quantity": 1,
+                    "price": 100
+                }
+            ]
+        },
+        {
+            "order_id": "1234",
+            "date": "2016-10-03T12:00:00Z",
+            "type": "status",
+            "value": "approved",
+            "details": {
+                "amount": "USD 180"
+            },
+            "items": [
+                {
+                    "item_id": "123",
+                    "name": "Product 1",
+                    "quantity": 1,
+                    "price": 100
+                },
+                {
+                    "item_id": "124",
+                    "name": "Product 2",
+                    "quantity": 1,
+                    "price": 80
+                }
+            ]
+        }
+    ],
+    "tickets": [
+        {
+            "ticket_id": "123456",
+            "date": "2016-09-01T12:00:00Z",
+            "channel": "email"
+        },
+        {
+            "ticket_id": "124123",
+            "date": "2016-10-01T12:00:00Z",
+            "channel": "email"
+        }
+    ],
+    "claims": [
+        {
+            "claim_id": "678908",
+            "date": "2016-10-03T12:00:00Z",
+            "channel": "email"
+        }
+    ]
+}

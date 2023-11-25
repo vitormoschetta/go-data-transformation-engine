@@ -1,0 +1,148 @@
+[
+    {
+        "key_ref": "id",
+        "filters": [
+            {
+                "operator": "not_empty"
+            }
+        ],
+        "key_result": "operation_id"
+    },
+    {
+        "key_ref": "user",
+        "filters": [
+            {
+                "operator": "not_empty"
+            }
+        ],
+        "key_result": "user_id",
+        "value": "$user.id"
+    },
+    {
+        "key_ref": "order",
+        "key_result": "orders",
+        "mapping": [
+            {
+                "key_ref": "number",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    },
+                    {
+                        "operator": "regex",
+                        "pattern": "([0-9]+)"
+                    }
+                ],
+                "key_result": "order_id"
+            },
+            {
+                "key_ref": "dateCreated",
+                "filters": [
+                    {
+                        "operator": "regex",
+                        "pattern": "([0-9]{4}-[0-9]{2}-[0-9]{2})"
+                    },
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "date"
+            },
+            {
+                "key_ref": "status",
+                "key_result": "type",
+                "value": "status"
+            },
+            {
+                "key_ref": "status",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "value"
+            },
+            {
+                "key_ref": "total",
+                "key_result": "details.amount",
+                "value": "$currency $total"
+            },
+            {
+                "key_ref": "item",
+                "key_result": "items"
+            }
+        ]
+    },
+    {
+        "key_ref": "interaction.tickets",
+        "key_result": "tickets",
+        "mapping": [
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "ticket_id",
+                "value": "$id"
+            },
+            {
+                "key_ref": "date",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "date",
+                "value": "$date"
+            },
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "channel",
+                "value": "$..generalInfo.channel"
+            }
+        ]
+    },
+    {
+        "key_ref": "interaction.claims",
+        "key_result": "claims",
+        "mapping": [
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "claim_id",
+                "value": "$id"
+            },
+            {
+                "key_ref": "date",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "date",
+                "value": "$date"
+            },
+            {
+                "key_ref": "id",
+                "filters": [
+                    {
+                        "operator": "not_empty"
+                    }
+                ],
+                "key_result": "channel",
+                "value": "$..generalInfo.channel"
+            }
+        ]
+    }
+]
