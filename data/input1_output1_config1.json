@@ -26,28 +26,18 @@
                 "filters": [
                     {
                         "operator": "not_empty"
-                    },
-                    {
-                        "operator": "regex",
-                        "pattern": "([0-9]+)"
                     }
                 ],
-                "key_result": "order_id",
-                "value": "$number"
+                "key_result": "order_id"
             },
             {
                 "key_ref": "dateCreated",
-                "filters": [
-                    {
-                        "operator": "regex",
-                        "pattern": "([0-9]{4}-[0-9]{2}-[0-9]{2})"
-                    },
+                "filters": [                    
                     {
                         "operator": "not_empty"
                     }
                 ],
-                "key_result": "date",
-                "value": "$dateCreated"
+                "key_result": "date"
             },
             {
                 "key_ref": "status",
